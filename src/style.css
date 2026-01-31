@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding:0;
+}
+nav{
+    display:flex;
+    align-items:center;
+    gap:50px;
+    height:75px;
+    background-color:aliceblue;
+    box-shadow:0 3px 5px black ;
+}
+nav> .logo{
+    font-family:'Poppins', sans-serif;
+    font-weight:bold;
+    font-size:xx-large;
+}
+.username-form>form>#username{
+    border-radius:15px;
+    padding:5px;
+}
+.username-form>form>button{
+    width:75px;
+    height:30px;
+    border-radius:15px;
+}
