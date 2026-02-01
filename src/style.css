@@ -136,3 +136,52 @@ form>label{
     font-weight:bold;
 }
 
+.repo-count{
+    display:flex;
+    flex-direction:column;
+    align-items:Center;
+
+}
+.repo-count>.title{
+    font-size:30px;
+}
+.repo-count>.count{
+    font-size:50px;
+    color:blue;
+    font-weight:bold;
+}
+.all-repos{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:50px;
+    row-gap: 75px;
+    padding:0 200px;
+    grid-auto-rows: minmax(60px, auto);
+}
+.all-repos>a{
+    text-decoration:none;
+    color:black;
+}
+.each-repo{
+    display:flex;
+    height:100%;
+    flex-direction:column;
+    padding:20px;
+    border:1px solid rgb(167, 166, 166);
+    border-radius:8px;
+    box-shadow:0 0 1px black;
+    justify-content:space-between;
+}
+.each-repo>.name{
+    font-weight:bold;
+    font-size:20px;
+}
+.each-repo>div{
+    display:flex;
+    gap:20px;
+}
+.each-repo>div>p{
+    display:flex;
+    align-items:center;
+}
+
