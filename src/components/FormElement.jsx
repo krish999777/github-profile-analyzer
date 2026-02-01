@@ -7,14 +7,21 @@ export default function(){
         const formEl=event.currentTarget
         const formData=new FormData(formEl)
         const username=formData.get("username")
-        navigate(`/user/${username}`)
+        if(username===""){
+            navigate('/')
+            return
+        }
+        formEl.reset()
+        navigate(`/${username}`)
     }
     return(
         <div className="username-form">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
-                <input id="username" type="text" name="username" placeholder="joe123"/>
-                <button>Search</button>
+                <div className="search-field-container">
+                    <input id="username" type="text" name="username" placeholder="joe123"/>
+                    <button>Search</button>
+                </div>
             </form>
         </div>
     )
