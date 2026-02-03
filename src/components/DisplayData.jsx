@@ -9,11 +9,7 @@ export default function(){
     useEffect(()=>{
         setError(null)
         setLoading(true)
-        fetch(`https://api.github.com/users/${username}`, {
-            headers: {
-                Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
-            }
-            })
+        fetch(`https://api.github.com/users/${username}`)
         .then(async res => {
             if (!res.ok) {
                 const errorData = await res.json()

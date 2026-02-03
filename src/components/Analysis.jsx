@@ -10,11 +10,7 @@ export default function(){
     const username=params.username
     useEffect(()=>{
         setLoading(true)
-        fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated&direction=desc`, {
-            headers: {
-                Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
-            }
-            })
+        fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated&direction=desc`)
         .then(async res => {
             if (!res.ok) {
                 const errorData = await res.json()
