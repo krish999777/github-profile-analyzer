@@ -1,4 +1,4 @@
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
 import {} from 'react'
 import Navbar from './components/Navbar'
 import DisplayData from './components/DisplayData'
@@ -17,6 +17,7 @@ export default function(){
                         <Route path="analysis" element={<Analysis/>}/>
                     </Route>
                 </Route>
+                <Route path='*' element={<Navigate to='/'/>}/>
             </Routes>
         </BrowserRouter>
     )
