@@ -19,7 +19,7 @@ export default function(){
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
                 <div className="search-field-container">
-                    <input autocomplete='off'id="username" type="text" name="username" placeholder="joe123"/>
+                    <input autoComplete='off'id="username" type="text" name="username" placeholder="joe123"/>
                     <button>Search</button>
                 </div>
             </form>

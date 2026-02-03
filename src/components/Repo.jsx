@@ -11,24 +11,29 @@ export default function(){
     const userData=useOutletContext()
     useEffect(()=>{
         setLoading(true)
-        fetch(`https://api.github.com/users/${username}/repos`)
-        .then(res=>{
-            if(!res.ok){
-                throw new Error('User not found!')
+        fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated&direction=desc`, {
+            headers: {
+                Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
+            }
+            })
+        .then(async res => {
+            if (!res.ok) {
+                const errorData = await res.json()
+                throw new Error(errorData.message || "Something went wrong")
             }
             return res.json()
-        })
+            })
         .then(data=>setRepoData(data))
         .catch(err=>{
-            setError(err)
+            setError(err.message)
         })
         .finally(()=>setLoading(false))
     },[])
-    if(loading||!repoData){
-        return (<h1>Loading...</h1>)
-    }
     if(error){
         return (<h1>{error}</h1>)
+    }
+    if(loading||!repoData){
+        return (<h1>Loading...</h1>)
     }
     const AllRepoArray=repoData.map(repo=>{
         return(

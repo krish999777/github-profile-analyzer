@@ -9,13 +9,18 @@ export default function(){
     useEffect(()=>{
         setError(null)
         setLoading(true)
-        fetch(`https://api.github.com/users/${username}`)
-        .then(res=>{
-            if(!res.ok){
-                throw new Error('User not found!')
+        fetch(`https://api.github.com/users/${username}`, {
+            headers: {
+                Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
+            }
+            })
+        .then(async res => {
+            if (!res.ok) {
+                const errorData = await res.json()
+                throw new Error(errorData.message || "Something went wrong")
             }
             return res.json()
-        })
+            })
         .then(data=>setUserData(data))
         .catch(error=>{
             setError(error.message)
@@ -50,7 +55,11 @@ export default function(){
                     className="data-navbar-links"to=".">Details</NavLink>
                 <NavLink 
                     style={({isActive})=>isActive?activeStyle:{}}
+                    end
                     className="data-navbar-links"to="repo">Repos</NavLink>
+                <NavLink 
+                    style={({isActive})=>isActive?activeStyle:{}}
+                    className="data-navbar-links"to="analysis">Analysis</NavLink>
             </div>
             <Outlet context={userData}/>
         </div>
